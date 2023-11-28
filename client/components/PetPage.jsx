@@ -50,9 +50,7 @@ function PetPage () {
         <div id="pet-page">
         <Dropdown />
         <StatusBar />
-        <picture>
-            <img src={source} alt="shark" style={{width: '100px', height: '100px'}}/>
-        </picture>
+        <img src={source} alt="shark"/>
         </div>
     )
 }

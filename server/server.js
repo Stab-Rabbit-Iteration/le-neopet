@@ -1,12 +1,13 @@
 const express = require('express');
 const path = require('path');
-const createRouter = require('./routes/createRouter');
-const userRouter = require('./routes/userRouter');
-const petPageRouter = require('./routes/petPageRouter');
 const app = express();
 const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config({path: __dirname + '/.uri.env'});
 const mongoose = require('mongoose');
+
+const userRouter = require('./routes/userRouter');
+const createRouter = require('./routes/createRouter');
+const petPageRouter = require('./routes/petPageRouter');
 
 // handle parsing request body
 app.use(express.json()); // parses body EXCEPT html
@@ -19,9 +20,9 @@ app.use(
   })
 );
 
-// handle static serve
-app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
-// app.use('/assets', express.static(path.join(__dirname, '../src/assets')));
+// handle static serve in production
+// app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
+// app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
 
 // handle api router
 app.use('/users', userRouter);
@@ -44,15 +45,17 @@ app.use((err, req, res, next) => {
 });
 
 // listen for port & connect mongoose db
-app.listen(3000, async () => {
-  console.log('Server started listening on port: 3000');
-  try {
-    // console.log(process.env.MONGO_URI);
-    await mongoose.connect(process.env.MONGO_URI, {});
-    console.log('Connected to Mongo DB.');
-  } catch (error) {
-    console.log(error);
-  }
-});
+const start = async () => {
 
-module.exports = app;
+  app.listen(3000, async () => {
+    console.log('Server started listening on port: 3000');
+    try {
+      await mongoose.connect(process.env.MONGO_URI, {});
+      console.log('Connected to Mongo DB.');
+    } catch (error) {
+      console.log(error);
+    }
+  });
+}
+
+start()
