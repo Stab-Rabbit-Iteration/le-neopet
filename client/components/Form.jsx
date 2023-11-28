@@ -47,14 +47,16 @@ function Form() {
         <label htmlFor="name">Pet's name</label>
         <input type="text" id="name"/>
         <fieldset>
-            <img 
+            <img
+            
             src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Meuble_h%C3%A9raldique_Chien_berger.svg/545px-Meuble_h%C3%A9raldique_Chien_berger.svg.png?20111214183057'
             alt="shark" 
             />
           <label htmlFor="pet1">Pet 1</label>
           <input type="radio" id="shark" name="petName" value="shark"/>
           <div id='pet-box'>
-              <img 
+              <img
+              
                 src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Meuble_h%C3%A9raldique_Chien_berger.svg/545px-Meuble_h%C3%A9raldique_Chien_berger.svg.png?20111214183057'
                 alt="shark" 
               />
@@ -62,7 +64,8 @@ function Form() {
             <input type='radio' id='batfish' name='petName' value='batfish' />
           </div>
         <div id='pet-box'>
-          <img 
+          <img
+          
             src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Meuble_h%C3%A9raldique_Chien_berger.svg/545px-Meuble_h%C3%A9raldique_Chien_berger.svg.png?20111214183057'
             alt="shark" 
             />
