@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { useEffect, useState } from 'react';
-import CreatePage from './CreatePage.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PetPage from './PetPage.jsx';
+import CreatePage from './components/CreatePage.jsx';
+import PetPage from './components/PetPage.jsx';
+import './styles.scss'
 
 function App(){
     return(
@@ -13,6 +14,7 @@ function App(){
                 <Route exact path='/petpage' Component={PetPage} />
                 <Route exact path ='/petpage/:id' Component={PetPage} />
                 {/* <Route exact path='/login' Component={LoginPage} */}
+                {/* unfinished path for login component ^ */}
             </Routes>
         </Router>
     )
