@@ -12,10 +12,16 @@ const userSlice = createSlice({
   reducers: {
     loginUser: (state, action) => {
       console.log('💥 userSlice.reducer.loginUser');
+      const {username, userId, pets} = action.payload
+      state = {
+        username,
+        userId,
+        pets
+      }
       return state
     }
   }
 })
 
-export const {loginUser} = userSlice.actions
+export const { loginUser } = userSlice.actions
 export default userSlice.reducer

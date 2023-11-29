@@ -12,7 +12,10 @@
   "author": "",
   "license": "ISC",
   "jest": {
-    "testEnvironment": "jest-environment-jsdom"
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
@@ -25,8 +28,8 @@
     "webpack": "^5.89.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
-    "@babel/preset-env": "^7.23.3",
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
     "@babel/preset-react": "^7.23.3",
     "@testing-library/jest-dom": "^6.1.4",
     "babel-jest": "^29.7.0",
