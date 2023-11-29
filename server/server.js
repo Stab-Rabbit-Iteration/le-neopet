@@ -4,13 +4,16 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config({path: __dirname + '/.uri.env'});
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser')
 
+const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRouter');
 const createRouter = require('./routes/createRouter');
 const petPageRouter = require('./routes/petPageRouter');
 
 // handle parsing request body
 app.use(express.json()); // parses body EXCEPT html
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true })); // parses html
 
 app.use(
@@ -25,12 +28,13 @@ app.use(
 // app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
 
 // handle api router
+app.use('/auth', authRouter);
 app.use('/users', userRouter);
 app.use('/create', createRouter);
 // app.use('/petPage', petPageRouter);
 
 // handle all route handler error for reqs (404)
-app.use((req, res) => res.status(404).send('this is not the right page'));
+app.use('*', (req, res) => res.status(404).send('this is not the right page'));
 
 // global error
 app.use((err, req, res, next) => {
