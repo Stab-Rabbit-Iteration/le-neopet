@@ -2,9 +2,9 @@ import React from 'react'
 import StatusBar from './StatusBar'
 import Dropdown from './Dropdown'
 import { useState, useEffect } from 'react';
-import shark from '../assets/goblin_shark_puppy_by_tsaoshin_df0germ-pre.jpeg'
-import redlip from '../assets/red-lipped.jpeg'
-import crab from '../assets/yeti-crab-prints Medium.jpeg'
+// import shark from '../assets/goblin_shark_puppy_by_tsaoshin_df0germ-pre.jpeg'
+// import redlip from '../assets/red-lipped.jpeg'
+// import crab from '../assets/yeti-crab-prints Medium.jpeg'
 
 function PetPage () {
 
@@ -33,30 +33,24 @@ function PetPage () {
             })
     }, []);
 
-    function getPetImages(petPictures) {
-        switch (petPictures) {
-            case 'shark':
-                return shark;
-            case 'crab':
-                return crab;
-            case 'batfish':
-                return redlip;
-            default:
-                return ''; // You might want to provide a default image or handle this case differently
-        }
-    }
+    // function getPetImages(petPictures) {
+    //     switch (petPictures) {
+    //         case 'shark':
+    //             return shark;
+    //         case 'crab':
+    //             return crab;
+    //         case 'batfish':
+    //             return redlip;
+    //         default:
+    //             return ''; // You might want to provide a default image or handle this case differently
+    //     }
+    // }
 
     return(
-<<<<<<< HEAD
-        <div>
-=======
         <div id="pet-page">
         <Dropdown />
->>>>>>> dev
         <StatusBar />
-        <picture>
-            <img src={source} alt="shark" style={{width: '100px', height: '100px'}}/>
-        </picture>
+        <img src={source} alt="shark"/>
         </div>
     )
 }

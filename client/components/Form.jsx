@@ -1,9 +1,10 @@
 import React from 'react'
 // import {withRouter} from 'react-router-dom'
-import { useNavigate } from 'react-router'
-import shark from '../assets/goblin_shark_puppy_by_tsaoshin_df0germ-pre.jpeg'
-import redlip from '../assets/red-lipped.jpeg'
-import crab from '../assets/yeti-crab-prints Medium.jpeg'
+import { useNavigate } from 'react-router-dom'
+// import shark from '../assets/goblin_shark_puppy_by_tsaoshin_df0germ-pre.jpeg'
+// import redlip from '../assets/red-lipped.jpeg'
+// import crab from '../assets/yeti-crab-prints Medium.jpeg'
+
 
 //    event.preventDefault();
 function Form() {
@@ -41,46 +42,37 @@ function Form() {
             .catch((error) => console.log('this is not working', error))
     }
 
-    return(
-   <form id="create pet">
-
+    return (
+      <form id="create pet">
         <label htmlFor="name">Pet's name</label>
         <input type="text" id="name"/>
-
-      <fieldset>
-        <picture>
-            {/* <source srcSet="https://cdn3.vectorstock.com/i/1000x1000/08/17/goblin-shark-vector-9340817.jpg" /> */}
-            <img src={shark} alt="shark" style={{width: '48px', height: '48px'}}/>
-        </picture>
-        <label htmlFor="pet1">Pet 1</label>
-        <input type="radio" id="shark" name="petName" value="shark"/>
-
-        <div id='pet-box'>
-          <picture>
-            {/* <source srcSet='https://cdn3.vectorstock.com/i/1000x1000/08/17/goblin-shark-vector-9340817.jpg' /> */}
+        <fieldset>
             <img
-              src={redlip}
-              alt="red-lip"
-              style={{ width: '48px', height: '48px' }}
+            
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Meuble_h%C3%A9raldique_Chien_berger.svg/545px-Meuble_h%C3%A9raldique_Chien_berger.svg.png?20111214183057'
+            alt="shark" 
             />
-          </picture>
-          <label htmlFor='pet2'>Pet 2</label>
-          <input type='radio' id='batfish' name='petName' value='batfish' />
-        </div>
-
+          <label htmlFor="pet1">Pet 1</label>
+          <input type="radio" id="shark" name="petName" value="shark"/>
+          <div id='pet-box'>
+              <img
+              
+                src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Meuble_h%C3%A9raldique_Chien_berger.svg/545px-Meuble_h%C3%A9raldique_Chien_berger.svg.png?20111214183057'
+                alt="shark" 
+              />
+            <label htmlFor='pet2'>Pet 2</label>
+            <input type='radio' id='batfish' name='petName' value='batfish' />
+          </div>
         <div id='pet-box'>
-          <picture>
-            {/* <source srcSet='https://cdn3.vectorstock.com/i/1000x1000/08/17/goblin-shark-vector-9340817.jpg' /> */}
-            <img
-              src={crab}
-              alt='shark'
-              style={{ width: '48px', height: '48px' }}
+          <img
+          
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Meuble_h%C3%A9raldique_Chien_berger.svg/545px-Meuble_h%C3%A9raldique_Chien_berger.svg.png?20111214183057'
+            alt="shark" 
             />
-          </picture>
           <label htmlFor='pet3'>Pet 3</label>
           <input type='radio' id='crab' name='petName' value='crab' />
         </div>
-      </fieldset>
+        </fieldset>
 
       <button onClick={handleContinue}>Continue</button>
     </form>
