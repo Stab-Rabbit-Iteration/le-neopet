@@ -82,9 +82,6 @@ function StatusBar () {
         </>
     </div>
     )
-
-
-
 }
 
 export default StatusBar
