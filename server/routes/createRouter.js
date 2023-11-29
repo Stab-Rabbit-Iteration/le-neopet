@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-  console.log('made it to petPageRouter');
+  console.log('made it to main page');
   return res.status(200);
 });
 
