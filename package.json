@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\"",
     "client": "cd client && npm start",
-    "server": "nodemon server/server.js"
+    "server": "nodemon server/server.js",
+    "test": "jest test-server server/__tests__/supertest.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,8 @@
     "nodemon": "^3.0.1"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
   }
 }
