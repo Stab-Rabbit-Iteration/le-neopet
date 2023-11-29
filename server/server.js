@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser')
 
 const authRouter = require('./routes/authRouter');
-const userRouter = require('./routes/userRouter');
 const createRouter = require('./routes/createRouter');
 
 // handle parsing request body
@@ -28,7 +27,6 @@ app.use(
 
 // handle api router
 app.use('/auth', authRouter);
-app.use('/users', userRouter);
 app.use('/create', createRouter);
 // app.use('/petPage', petPageRouter);
 
