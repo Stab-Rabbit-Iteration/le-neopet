@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   username: null,
   userId: null,
-  pets: []
+  pets: [],
 }
 
 const userSlice = createSlice({
@@ -11,21 +11,20 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, action) => {
-      console.log('💥 userSlice.reducer.loginUser');
-      const {username, userId} = action.payload
+      console.log('💥 userSlice.reducer.loginUser')
+      const { username, userId } = action.payload
       state = {
         username,
-        userId
+        userId,
       }
       return state
     },
     setPets: (state, action) => {
-      console.log('💥 userSlice.reducer.setPets');
-      const { pets } = action.payload
-      state.pets = pets
+      console.log('💥 userSlice.reducer.setPets')
+      state.pets = action.payload
       return state
-    }
-  }
+    },
+  },
 })
 
 export const { loginUser, setPets } = userSlice.actions
