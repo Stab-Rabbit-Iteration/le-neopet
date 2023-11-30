@@ -5,11 +5,13 @@ import store from './store'
 import App from './App.jsx';
 // import CreatePage from './components/CreatePage.jsx';
 // import './scss/_app.scss';
-// import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-    <Provider store={store}>
-    <App />
-    </Provider>
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter>
 );

@@ -12,11 +12,10 @@ const userSlice = createSlice({
   reducers: {
     loginUser: (state, action) => {
       console.log('💥 userSlice.reducer.loginUser');
-      const {username, userId, pets} = action.payload
+      const {username, userId} = action.payload
       state = {
         username,
-        userId,
-        pets
+        userId
       }
       return state
     }
