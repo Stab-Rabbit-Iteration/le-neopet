@@ -13,6 +13,7 @@ module.exports = {
       directory: path.resolve(__dirname, 'dist'),
     },
     port: 8080,
+    historyApiFallback: true,
     // proxy: { '/create': 'http://localhost:3000'}
   },
   plugins: [

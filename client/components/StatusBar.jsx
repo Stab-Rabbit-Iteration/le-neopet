@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 
-function StatusBar () {
+function StatusBar (props) {
     // set states for both hunger and thirst
-    const [hunger, setHunger] = useState(0);
-    const [thirst, setThirst] = useState(0);
+    const [hunger, setHunger] = useState(props.hunger);
+    const [thirst, setThirst] = useState(props.thirst);
     // handle feed and hydrate button click
     const {id} = useParams();
 
@@ -24,19 +24,19 @@ function StatusBar () {
         // use the fetched value to update the state
         // decrement of hunger and thirst over time
     useEffect(() => {
-        fetch(`http://localhost:3000/create/pets/${id}`)
-        .then((data) => {
-            return data.json()
-        })
-        .then((data) => {
-            if(data && data.hunger !== undefined && data.thirst !== undefined){
-            setHunger(data.hunger);
-            setThirst(data.thirst);
-            console.log(data.thirst)
-            console.log(data.hunger)
-            }
-        })
-        .catch((error) => console.log('Error fetching values:', error))
+        // fetch(`http://localhost:3000/create/pets/${id}`)
+        // .then((data) => {
+        //     return data.json()
+        // })
+        // .then((data) => {
+        //     if(data && data.hunger !== undefined && data.thirst !== undefined){
+        //     // setHunger(data.hunger);
+        //     // setThirst(data.thirst);
+        //     console.log(data.thirst)
+        //     console.log(data.hunger)
+        //     }
+        // })
+        // .catch((error) => console.log('Error fetching values:', error))
 
         const decreaseHungerThirst = setInterval(() => {
             setHunger((prevHunger) => Math.max(prevHunger - 5, 0));
@@ -44,27 +44,26 @@ function StatusBar () {
         }, 5000)
 
         return () => clearInterval(decreaseHungerThirst);
-    }, [id])
+    }, [])
 
     // update the server side values
-    const updateServerValues = (updatedValues) => {
+    // const updateServerValues = (updatedValues) => {
 
-        fetch(`http://localhost:3000/create/pets/${id}`, {
-                method: 'PATCH',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedValues)
-            })
-            .then((data) => data.json())
-            .then((updatedData) => {
-                setHunger(updatedData.hunger);
-                setThirst(updatedData.thirst);
-            })
-            .catch(error => console.log('Error updating: ', error))
-    }
-    // render
+    //     fetch(`http://localhost:3000/create/pets/${id}`, {
+    //             method: 'PATCH',
+    //             mode: 'cors',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify(updatedValues)
+    //         })
+    //         .then((data) => data.json())
+    //         .then((updatedData) => {
+    //             setHunger(updatedData.hunger);
+    //             setThirst(updatedData.thirst);
+    //         })
+    //         .catch(error => console.log('Error updating: ', error))
+    // }
 
     return(
     <div>

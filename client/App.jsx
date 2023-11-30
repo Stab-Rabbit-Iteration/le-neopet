@@ -2,22 +2,22 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Header from './components/Header.jsx'
 import PetSummary from './components/PetSummary.jsx';
 import PetPage from './components/PetPage.jsx';
 import Login from './components/Login.jsx';
-import './styles.scss'
+import './scss/styles.scss'
 
 function App(){
-    return(
-        <Router>
+    return (
+        <div className='main-container'>
+            <Header />
             <Routes>
-                <Route exact path='/:username' Component={PetSummary} />
-                <Route exact path='/petpage' Component={PetPage} />
+                <Route exact path='/' Component={Login} />
+                <Route exact path='/petpage' Component={PetSummary} />
                 <Route exact path ='/petpage/:id' Component={PetPage} />
-                {/* <Route exact path='/login' Component={LoginPage} */}
-                {/* unfinished path for login component ^ */}
             </Routes>
-        </Router>
+        </div>
     )
 }
 

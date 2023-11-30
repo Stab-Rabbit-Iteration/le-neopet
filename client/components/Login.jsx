@@ -3,6 +3,7 @@ import authFetch from '../axios/authFetch'
 import {useNavigate} from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../reducers/userReducer'
+import doxie_gif from '../assets/doxie_gif.gif'
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -10,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const user = useSelector(state => state.users)
+  const user = useSelector(state => state.user)
 
   useEffect(() => {
     if (user.userId) {
@@ -41,20 +42,26 @@ const Login = () => {
   }
 
   return (
-    <div style={{ width: "100%", height: '100vh', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor='username'>username</label>
-        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <label htmlFor='password'>password</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button>{isLogin ? "Login" : "Sign Up"}</button>
+    <div className='login-container'>
+      <form onSubmit={(e) => handleSubmit(e)} className='login-form'>
+        <h2 className='login-title'>WELCOME TO DIGIPET!🐰🗡️</h2>
+        <label className='login-label' htmlFor='username'>USERNAME</label>
+        <input className='login-input' type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+        <label className='login-label' htmlFor='password'>PASSWORD</label>
+        <input className='login-input' type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button className='login-btn btn'>{isLogin ? "LOGIN" : "SIGN UP"}</button>
       </form>
       {isLogin ? (
-        <p>Not a member? <span onClick={() => setIsLogin(!isLogin)} style={{ color: "blue" }}>Sign Up</span></p>
+        <p className='login-swap'>Not a member? <span className='login-swap-span' onClick={() => setIsLogin(!isLogin)}>Sign Up</span></p>
       )
         : (
-          <p>Already a member? <span onClick={() => setIsLogin(!isLogin)} style={{ color: "blue" }}>Login</span></p>
+          <p className='login-swap'>Already a member? <span className='login-swap-span' onClick={() => setIsLogin(!isLogin)}>Login</span></p>
         )}
+      <img
+        className="doxie"
+        src={doxie_gif}
+        alt="ween gang"
+      />
     </div>
   )
 }

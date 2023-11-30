@@ -7,7 +7,8 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser')
 
 const authRouter = require('./routes/authRouter');
-const createRouter = require('./routes/createRouter');
+const petRouter = require('./routes/petRouter');
+// const createRouter = require('./routes/createRouter');
 
 // handle parsing request body
 app.use(express.json()); // parses body EXCEPT html
@@ -27,7 +28,8 @@ app.use(
 
 // handle api router
 app.use('/auth', authRouter);
-app.use('/create', createRouter);
+// app.use('/pets', petRouter);
+// app.use('/create', createRouter);
 // app.use('/petPage', petPageRouter);
 
 

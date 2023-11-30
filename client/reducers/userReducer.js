@@ -18,9 +18,15 @@ const userSlice = createSlice({
         userId
       }
       return state
+    },
+    setPets: (state, action) => {
+      console.log('💥 userSlice.reducer.setPets');
+      const { pets } = action.payload
+      state.pets = pets
+      return state
     }
   }
 })
 
-export const { loginUser } = userSlice.actions
+export const { loginUser, setPets } = userSlice.actions
 export default userSlice.reducer

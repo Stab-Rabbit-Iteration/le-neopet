@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken');
-const jwtSecret = require('../../jwt');
-const User = require('../models/user');
-const NotAuthorizedError = require('../errors/not-authorized-error');
+const User = require('../model/userModel');
 
 const currentUser = async (req, res, next) => {
   // GET TOKEN FROM COOKIE
@@ -15,7 +13,7 @@ const currentUser = async (req, res, next) => {
 
   try {
     // USER ID STORED ON JWT - DECRYPT FROM JWT
-    const payload = jwt.verify(token, jwtSecret.JWT_KEY);
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
     // GET USER FROM DECRYPTED JWT
     const currentUser = await User.findById(payload.userId);
     // ATTACH CURRENT USER TO REQUEST OBJECT
