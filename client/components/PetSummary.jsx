@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
-import { useSelector, useDispatch } from 'react-redux';
-import Form from './Form';
-import { Link } from 'react-router-dom';
-import PetPage from './PetPage';
-import Dropdown from './Dropdown';
-import StatusBar from './StatusBar';
-import {setPets} from '../reducers/userReducer'
+import React, { useState, useEffect } from 'react'
+import { nanoid } from 'nanoid'
+import { useSelector, useDispatch } from 'react-redux'
+import Form from './Form'
+import { Link } from 'react-router-dom'
+import PetPage from './PetPage'
+import Dropdown from './Dropdown'
+import StatusBar from './StatusBar'
+import { setPets } from '../reducers/userReducer'
 import authFetch from '../axios/authFetch'
 
 const samplePets = [
@@ -39,13 +39,10 @@ const samplePets = [
   },
 ]
 
-
 function PetSummary() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
-  console.log('🐶 Pets from DB: ', user.pets);
-  // const pets = samplePets;
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
 
   const getMyPets = async () => {
     try {
@@ -54,7 +51,7 @@ function PetSummary() {
       setIsLoading(false)
       dispatch(setPets(response.data))
     } catch (err) {
-      console.log(err);
+      console.log(err)
       setIsLoading(false)
     }
   }
@@ -64,33 +61,31 @@ function PetSummary() {
   }, [])
 
   if (isLoading) {
-    return (
-    <p className="loader">Loading...</p>
-  )};
-  
+    return <p className="loader">Loading...</p>
+  }
+
   return (
-    <div id='summaryContainer'>
+    <div id="summaryContainer">
       <div className="infoCard" id="summaryCards">
-      {user.pets.map((ele) => {
-        return (
-          <Link key={nanoid()} to={`/PetPage/${ele.id}`}>
-          <p>{ele.name}</p>
-            <img src={ele.picture}></img>
-            <StatusBar hunger={ele.hunger} thirst={ele.thirst} />
-          </Link>
-        ) 
-      })}
+        {user.pets.map((ele) => {
+          return (
+            <Link key={nanoid()} to={`/PetPage/${ele.id}`}>
+              <p>{ele.name}</p>
+              <img src={ele.picture}></img>
+              <StatusBar hunger={ele.hunger} thirst={ele.thirst} />
+            </Link>
+          )
+        })}
       </div>
-      <div className="infoCard" id='create-pet'>
+      <div className="infoCard" id="create-pet">
         {/* <Dropdown /> */}
         <Form />
       </div>
     </div>
-  );
+  )
 }
 
-export default PetSummary;
-
+export default PetSummary
 
 // Pets with and without hats
 // https://i.postimg.cc/wjxCHSZQ/cat.png
