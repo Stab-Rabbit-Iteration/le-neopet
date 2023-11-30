@@ -105,4 +105,14 @@ authController.logout = (req, res, next) => {
   return res.status(200).json({ message: 'User Logged Out' });
 };
 
+authController.getCurrentUser = async (req,res, next) => {
+  const {currentUser} = req
+
+  if (!currentUser) {
+    return res.status(200).json({})
+  }
+
+  res.status(200).json(currentUser)
+}
+
 module.exports = authController

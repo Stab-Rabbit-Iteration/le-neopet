@@ -1,10 +1,11 @@
 import React from 'react'
-import StatusBar from './StatusBar'
 import Dropdown from './Dropdown'
 import { useState, useEffect } from 'react';
+import StatusBar from './StatusBar'
 // import shark from '../assets/goblin_shark_puppy_by_tsaoshin_df0germ-pre.jpeg'
 // import redlip from '../assets/red-lipped.jpeg'
 // import crab from '../assets/yeti-crab-prints Medium.jpeg'
+
 
 function PetPage () {
 
@@ -32,6 +33,7 @@ function PetPage () {
                 setLoading(false);
             })
     }, []);
+    
 
     // function getPetImages(petPictures) {
     //     switch (petPictures) {
@@ -48,9 +50,9 @@ function PetPage () {
 
     return(
         <div id="pet-page">
-        <Dropdown />
-        <StatusBar />
         <img src={source} alt="shark"/>
+        {/* <Dropdown /> */}
+        <StatusBar />
         </div>
     )
 }

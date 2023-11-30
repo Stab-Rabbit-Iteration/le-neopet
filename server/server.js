@@ -6,7 +6,6 @@ require('dotenv').config({ path: __dirname + '/.uri.env' })
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 
-// const Pet = require('./model/petModel')
 const authRouter = require('./routes/authRouter')
 const petRouter = require('./routes/petRouter')
 // const createRouter = require('./routes/createRouter');
@@ -47,6 +46,7 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message)
 })
 
+const Pet = require('./model/petModel')
 // listen for port & connect mongoose db
 const start = async () => {
   app.listen(3000, async () => {

@@ -2,9 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const petSchema = new Schema({
+  userId: {
+    type: mongoose.Types.ObjectId,
+  },
   name: {
     type: String,
     required: true,
+  },
+  petType: {
+    type: String,
+    enum: ['cat', 'cat2', 'dog', 'dog2', 'hedgehog','rabbit', 'snake', 'mole'],
+    required: true
   },
   hunger: {
     type: Number,
@@ -15,9 +23,6 @@ const petSchema = new Schema({
     type: Number,
     required: true,
     default: 50,
-  },
-  userId: {
-  	type: mongoose.Types.ObjectId,
   },
   life: {
     type: Boolean,

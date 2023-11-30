@@ -6,43 +6,14 @@ import { Link } from 'react-router-dom'
 import PetPage from './PetPage'
 import Dropdown from './Dropdown'
 import StatusBar from './StatusBar'
-import { setPets } from '../reducers/userReducer'
+import { setPets, changeHat } from '../reducers/userReducer'
 import authFetch from '../axios/authFetch'
-
-const samplePets = [
-  {
-    userid: 3477234382394,
-    name: 'Sample Pet1',
-    hunger: 50,
-    thirst: 50,
-    life: true,
-    age: 10,
-    picture: 'sample_picture.jpg',
-  },
-  {
-    userid: 3477234382222,
-    name: 'Sample Pet2',
-    hunger: 80,
-    thirst: 20,
-    life: true,
-    age: 10,
-    picture: 'sample_picture.jpg',
-  },
-  {
-    userid: 3477234332394,
-    name: 'Dead Pet',
-    hunger: 100,
-    thirst: 100,
-    life: false,
-    age: 10,
-    picture: 'sample_picture.jpg',
-  },
-]
 
 function PetSummary() {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(true)
+  console.log(user.pets)
 
   const getMyPets = async () => {
     try {
@@ -56,31 +27,48 @@ function PetSummary() {
     }
   }
 
+  const handleHatChange = (petId) => {
+    dispatch(changeHat({petId, currentPets: user.pets}))
+  }
+
   useEffect(() => {
     getMyPets()
   }, [])
 
   if (isLoading) {
-    return <p className="loader">Loading...</p>
-  }
+    return (
+      <div className="loader">
+        <div>Loading...</div>
+        <div><img className="doxie" src= 'https://i.ibb.co/WP25hLK/doxie-walk.gif'></img></div>
+      </div>
+  )}
+
 
   return (
     <div id="summaryContainer">
+      {/* <h1 style={{textAlign: 'center'}}>Your pets are hungry</h1> */}
       <div className="infoCard" id="summaryCards">
         {user.pets.map((ele) => {
           return (
-            <Link key={nanoid()} to={`/PetPage/${ele.id}`}>
-              <p>{ele.name}</p>
-              <img src={ele.picture}></img>
-              <StatusBar hunger={ele.hunger} thirst={ele.thirst} />
-            </Link>
+            <div key={nanoid()} className="pet-card">
+              <div className="pet-name">
+                <Link to={`/petdetails/${ele._id}`}>
+                  <p>{ele.name}</p>
+                </Link>
+              </div>
+              <div className="pet-and-button">
+                <img src={ele.picture} className="pet-pic"></img>
+                <button onClick={() => handleHatChange(ele._id)} className="hat-btn">CHANGE MY VIBE</button>
+              </div>
+              <StatusBar hunger={ele.hunger} thirst={ele.thirst} petId={ele._id} />
+            </div>
           )
         })}
       </div>
-      <div className="infoCard" id="create-pet">
+      {/* <div className="infoCard" id="create-pet"> */}
         {/* <Dropdown /> */}
-        <Form />
-      </div>
+        {/* <Form /> */}
+      {/* </div> */}
     </div>
   )
 }
@@ -98,3 +86,14 @@ export default PetSummary
 // https://i.postimg.cc/25MMQ360/hedgehog-beanie.png
 // https://i.postimg.cc/5yqrW3mr/rabbit.png
 // https://i.postimg.cc/cCNzzjfY/rabbit-beanie.png
+
+const petImages = {
+  cat: ['https://i.postimg.cc/wjxCHSZQ/cat.png', 'https://i.postimg.cc/kGx0X97f/cat-beanie.png', "https://i.ibb.co/Pjkncvy/cat-beret.png", 'https://i.ibb.co/5WkNJPX/cat-chef.png'],
+  cat2: ['https://ibb.co/3kCNdCJ', 'https://i.ibb.co/x3tJbDN/cat2.png', 'https://i.ibb.co/5h2vfmn/cat2-beanie.png', 'https://i.ibb.co/sVT60Hk/cat2-crown.png'],
+  dog: ['https://i.postimg.cc/BQ3W78Cy/dog.png', 'https://i.postimg.cc/SNfBByTK/dog-beanie.png', 'https://i.ibb.co/LJ4BpTd/dog-beret.png', 'https://i.ibb.co/b2Jdd5m/dog-chef.png'],
+  dog2: ['https://i.ibb.co/QMBNs0W/dog2.png', 'https://i.ibb.co/zH5FrqS/dog2-beanie.png', 'https://i.ibb.co/KhbfR3V/dog2-chef.png', 'https://i.ibb.co/grLtYHF/dog2-hp.png', 'https://i.ibb.co/jbSpWmT/dog2-party.png'],
+  hedgehog: ['https://i.postimg.cc/FRSqDmkN/hedgehog.png','https://i.postimg.cc/25MMQ360/hedgehog-beanie.png', 'https://i.ibb.co/3fmX2xL/hedgehog-chef.png'],
+  rabbit: ['https://i.postimg.cc/5yqrW3mr/rabbit.png', 'https://i.postimg.cc/cCNzzjfY/rabbit-beanie.png', 'https://i.ibb.co/4tSk9Vv/rabbit-hp.png', 'https://i.ibb.co/F8rbYC6/rabbit-pirate.png'],
+  snake: ['https://i.ibb.co/b221ck0/snek.png', 'https://i.ibb.co/c8Q9rh3/snek-beanie.png', 'https://i.ibb.co/TK1B1x5/snek-hp.png', 'https://i.ibb.co/4Fk4dGj/snek-crown.png', 'https://i.ibb.co/xYw9Z5s/snek-spin.png'],
+  mole: ['https://i.ibb.co/80HJq6S/laura.png', 'https://i.ibb.co/BBq0PKX/laura-pink.png', 'https://i.ibb.co/fNcjcSx/laura-chef.png', 'https://i.ibb.co/NxYqXYG/laura-beanie.png']
+}

@@ -7,4 +7,6 @@ router.use(currentUser)
 router.get('/get-my-pets', petController.getMyPets)
 router.patch('/update-pet', petController.updatePet)
 
+// router.get('/petpage/:petid', petController.getPetDetails)
+
 module.exports = router;
