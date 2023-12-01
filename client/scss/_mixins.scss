@@ -1,0 +1,19 @@
+@mixin flex($direction: column, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin shadow(
+  $s1: 2px,
+  $b1: 4px,
+  $c1: #000000,
+  $o1: 0.25,
+  $s2: 4px,
+  $b2: 6px,
+  $c2: #000000,
+  $o2: 0.35
+) {
+  box-shadow: $s1 $s1 $b1 rgba($c1, $o1), $s2 $s2 $b2 rgba($c2, $o2);
+}
