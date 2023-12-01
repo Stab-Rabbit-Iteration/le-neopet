@@ -27,7 +27,7 @@ const userSlice = createSlice({
     changeHat: (state, action) => {
       const petImages = {
         cat: ['https://i.postimg.cc/wjxCHSZQ/cat.png', 'https://i.postimg.cc/kGx0X97f/cat-beanie.png', "https://i.ibb.co/Pjkncvy/cat-beret.png", 'https://i.ibb.co/5WkNJPX/cat-chef.png'],
-        cat2: ['https://i.postimg.cc/FK7wk09f/cat2.png', 'https://i.postimg.cc/YCXJSdwK/cat2-beanie.png', 'https://i.ibb.co/72zFS29/cat2-chef.png', 'https://i.ibb.co/sVT60Hk/cat2-crown.png'],
+        cat2: ['https://i.ibb.co/Kmrqhr1/strongcat.png', 'https://i.ibb.co/nP5Sr9z/buff-Cat-beanie.png', 'https://i.ibb.co/2SZwXjJ/buff-Cat-backwardshat.png', 'https://i.ibb.co/sVT60Hk/cat2-crown.png'],
         dog: ['https://i.postimg.cc/BQ3W78Cy/dog.png', 'https://i.postimg.cc/SNfBByTK/dog-beanie.png', 'https://i.ibb.co/LJ4BpTd/dog-beret.png', 'https://i.ibb.co/b2Jdd5m/dog-chef.png'],
         hedgehog: ['https://i.postimg.cc/FRSqDmkN/hedgehog.png','https://i.postimg.cc/25MMQ360/hedgehog-beanie.png', 'https://i.ibb.co/3fmX2xL/hedgehog-chef.png'],
         rabbit: ['https://i.postimg.cc/5yqrW3mr/rabbit.png', 'https://i.postimg.cc/cCNzzjfY/rabbit-beanie.png', 'https://i.ibb.co/4tSk9Vv/rabbit-hp.png', 'https://i.ibb.co/F8rbYC6/rabbit-pirate.png'],
